@@ -2,19 +2,19 @@
   "name": "random--generator",
   "version": "1.0.0",
   "description": "Dic&amp;Random genetarors module with focus on name/password",
-  "main": "index.js",
-  
+  "main": "src/RandomGenerator.js",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    
+    "test": "node test-app/test.js"
+
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navee111/Random--generator.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["random", "generator", "name", "password", "dic", "gaming"],
+  "author": "Nawid",
+  "license": "MIT",
   "type": "module",
   "bugs": {
     "url": "https://github.com/navee111/Random--generator/issues"
