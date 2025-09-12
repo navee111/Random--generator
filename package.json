@@ -1,0 +1,23 @@
+{
+  "name": "random--generator",
+  "version": "1.0.0",
+  "description": "Dic&amp;Random genetarors module with focus on name/password",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navee111/Random--generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/navee111/Random--generator/issues"
+  },
+  "homepage": "https://github.com/navee111/Random--generator#readme"
+}
