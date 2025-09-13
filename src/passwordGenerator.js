@@ -65,7 +65,21 @@ class PasswordGenerator {
     // human readable password generation logic.
   }
   validateStrenth(password) {
-    // returns strength of the password
+    let score = 0
+
+    // length
+    if (password.length >= 8) score += 20
+    if (password.length >= 12) score += 10
+    if ( password.lengh >= 16) score += 10
+
+    // character variety
+    if (/[a-z]/.test(password)) score += 15
+    if (/[A-Z]/.test(password)) score += 15
+    if(/[0-9]/.test(password)) score += 15
+    if (/[^a-zA-Z0-9]/.test(password)) score += 25
+
+    return Math.min(score, 100) // max score is 100
+
   }
 }
 export default PasswordGenerator
