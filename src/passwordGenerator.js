@@ -10,14 +10,14 @@ class PasswordGenerator {
 
   generateSecure(length = 12, options = {}) {
 
-    const defaultOptions = {
+    const defaults = {
       includesUppercase: true,
       includesLowercase: true,
       includesNumbers: true,
       includesSymbols: true,
-      excludeAmbiguous: true,
+      excludeAmbiguous: false,
     }
-    const opts = { ...defaultOptions, ...options }
+    const opts = { ...defaults, ...options }
 
     // building the character set.
     let charset = ""
