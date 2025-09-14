@@ -9,23 +9,8 @@ class PasswordGenerator {
   }
 
   generateSecure(length = 12, options = {}) {
-    // test implementation of secure password generation.
-  
-    const allChars =
-      this.lowercase +
-      this.uppercase +
-      this.numbers +
-      this.symbols
 
-    let password = ""
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * allChars.length)
-      password += allChars[randomIndex]
-    }
-    return password
-
-    
-      const defaultOptions = {
+    const defaultOptions = {
       includesUppercase: true,
       includesLowercase: true,
       includesNumbers: true,
