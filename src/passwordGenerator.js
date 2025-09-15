@@ -1,55 +1,58 @@
  
 class PasswordGenerator {
   constructor() {
-    this.lowercasecase = "abcdefghijklmnopqrstuvwxyz"
+    this.lowercase = "abcdefghijklmnopqrstuvwxyz"
     this.uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     this.numbers = "0123456789"
     this.symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?"
-    this.ambiguous = "0O1lI" // Charactoers that should be avoided
+    this.ambiguous = "0O1lI" // Characters that should be avoided.
   }
-
-  generateSecure(length = 12, options = {}) {
-
-    const defaults = {
-      includesUppercase: true,
-      includesLowercase: true,
-      includesNumbers: true,
-      includesSymbols: true,
-      excludeAmbiguous: false,
-    }
-    const opts = { ...defaults, ...options }
-
-    // building the character set.
-    let charset = ""
-    if (opts.includesLowercase) {
-      charset += this.lowercase
-    }
-    if (opts.includesUppercase) {
-      charset += this.uppercase
-    }
-    if (opts.includesNumbers) {
-      charset += this.numbers
-    }
-    if (opts.includesSymbols) {
-      charset += this.symbols
-    }
-    // removing ambiguous characters.
-    if (opts.excludeAmbiguous) {
-      for (let char of this.ambiguous) {
-        charset = charset.replace(new RegExp(char, "g"), "")
-        let password = ""
-        for (let i = 0; i < length; i++) {
-          const randomIndex = Math.floor(Math.random() * charset.length)
-          password += charset[randomIndex]
-        }
-        return password
-      }
+generateSecure(length = 12, options = {}) {
+  const defaults = {
+    includeUppercase: true,
+    includeLowercase: true,
+    includeNumbers: true,
+    includeSymbols: true,
+    excludeAmbiguous: false
+  }
+  
+  const opts = { ...defaults, ...options }
+  
+  // Build character set based on options.
+  let charset = ''
+  if (opts.includeLowercase) charset += this.lowercase
+  if (opts.includeUppercase) charset += this.uppercase
+  if (opts.includeNumbers) charset += this.numbers
+  if (opts.includeSymbols) charset += this.symbols
+  
+  // Remove ambiguous characters if requested.
+  if (opts.excludeAmbiguous) {
+    const ambiguous = '0O1lI'
+    for (let char of ambiguous) {
+      charset = charset.replace(new RegExp(char, 'g'), '')
     }
   }
+  
+  
+  if (charset === '') {
+    charset = this.lowercase // fallback
+  }
+  
+  // Generate password
+  let password = ''
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length)
+    password += charset[randomIndex]
+  }
+  
+  return password
+}
+  
   generateReadable(length = 12) {
     // human readable password generation logic.
   }
-  validateStrenth(password) {
+
+  validateStrength(password) {
     let score = 0
 
     // length

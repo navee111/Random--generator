@@ -11,14 +11,26 @@ for (let i = 0; i < 10; i++) {
 console.log('\nTesting Password Strength:')
 const testPasswords = ['123456', 'password123', passGen.generateSecure(16)]
 testPasswords.forEach(pwd => {
-  console.log(`"${pwd}" = strength: ${passGen.validateStrenth(pwd)}/100`)
+  console.log(`"${pwd}" = strength: ${passGen.validateStrength(pwd)}/100`)
 
 })
 
 console.log('\nTesting password options:')
-console.log('numbers only:', passGen.generatorSecure(8,{
+console.log('numbers only:', passGen.generateSecure(8,{
   includeUppercase: false,
   includeLowercase: false,
   includeSymbols: false
 }))
-// To Do: Add more tests for different options and edge cases.
+
+console.log('no symbols:', passGen.generateSecure (12,{
+  includeSymbols: false
+
+}))
+console.log('latters only:', passGen.generateSecure(12,({
+  includeNumbers: false,
+  includeSymbols: false
+
+})))
+console.log('no ambiguous:', passGen.generateSecure(12,{
+  excludeAmbiguous: true
+}))
