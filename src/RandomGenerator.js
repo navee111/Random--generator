@@ -6,4 +6,5 @@ class randomGenerator {
   generatePassword (length, options) {
     return this.passwordGenerator.generatorSecure(length, options)
   }
+  // latter: To do add generateName.
 }
