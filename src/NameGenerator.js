@@ -10,8 +10,29 @@ class NameGenerator {
   constructor () {
 
   }
-  geberateFirstName () {
-    // To do: implement first name generation logic.
+  generateFirstName(gender = 'any') {
+    let namePool = []
+    if (gender === 'male') {
+      namePool = FIRST_NAMES.male
+    } else if ( gender === 'female') {
+      namePool = FIRST_NAMES.female
+
+    } else if ( gender === 'neutral') {
+      namePool = FIRST_NAMES.neutral
+
+
+    } else {
+      // 'any' - combine all names.
+      namePool = [
+        ...FIRST_NAMES.male,
+        ...FIRST_NAMES.female,
+        ...FIRST_NAMES.neutral
+      ]
+    }
+     const randomIndex = Math.floor(Math.random() * namePool.length)
+      return namePool[randomIndex]
+
+
   }
   generateLastName () {
     // To do: implement last name generation logic.
