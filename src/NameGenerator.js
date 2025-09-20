@@ -40,8 +40,27 @@ class NameGenerator {
   generateFullName () {
     // To do: implement full name generation logic.
   }
-  generateUsername () {
-    // To do: implement username generation logic.
+  generateUsername (style = 'modern', maxLength = 15) {
+    let Username = ''
+    if ( style === 'modern') {
+      const prefix = USERNAMES_PREFIXES[Math.floor(Math.random() * USERNAMES_PREFIXES.length)]
+      const suffix = USERNAMES_SUFFIXES[Math.floor(Math.random() * USERNAMES_SUFFIXES.length)]
+      const number = Math.floor(Math.random() * 99) * 1
+      Username = `${prefix}${number}${suffix}`
+    } else if ( style === 'simple') {
+      const word = USERNAMES_PREFIXES.neutral[Math.floor(Math.random() * USERNAMES_PREFIXES.neutral.length)]
+      const number = Math.floor(Math.random() * 999) * 1
+      Username = `${word}${number}`
+    } else if ( style === 'namne-based') {
+      const firstName = this.generateFirstName().toLowerCase()
+      const lastName = this.generateLastName().toLowerCase()
+      const number = Math.floor(Math.random() * 99) * 1
+      Username = `${firstName}.${lastName}${number}`
+    }
+    if (Username.length > maxLength) {
+      Username = Username.substring(0, maxLength)
+    }
+    return Username
   }
   generateBusinessName () {
     // To do: implement business name generation logic.
