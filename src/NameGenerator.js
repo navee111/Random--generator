@@ -65,8 +65,25 @@ generateLastName () {
     }
     return Username
   }
-  generateBusinessName () {
-    // To do: implement business name generation logic.
+  generateBusinessName ( industry = 'general') {
+    let wordPool = []
+
+    if ( industry === 'tech') {
+      wordPool = BUSINESS_WORDS.tech
+    } else if ( industry === 'creative') {
+      wordPool = BUSINESS_WORDS.creative
+    } else if ( industry === 'business') {
+      wordPool = BUSINESS_WORDS.business
+    } else {
+      // 'general' - combine all words.
+      wordPool = [
+        ...BUSINESS_WORDS.tech,
+        ...BUSINESS_WORDS.creative,
+        ...BUSINESS_WORDS.business
+      ]
+    }
+    // To do: implement to pick word n suffix.
+    
     
   }
   generateEmail () {
