@@ -66,6 +66,8 @@ generateLastName () {
     return Username
   }
   generateBusinessName ( industry = 'general') {
+     //console.log('BUSINESS_WORDS:', BUSINESS_WORDS)
+    //console.log('industry parameter:', industry)
     let wordPool = []
 
     if ( industry === 'tech') {
@@ -82,9 +84,13 @@ generateLastName () {
         ...BUSINESS_WORDS.business
       ]
     }
-    // To do: implement to pick word n suffix.
-    
-    
+    //console.log('wordPool:', wordPool)
+  //console.log('wordPool length:', wordPool.length)
+
+    const word = wordPool[Math.floor(Math.random() * wordPool.length)]
+    console.log('selected word:', word)
+      const suffix = BUSINESS_SUFFIXES[Math.floor(Math.random() * BUSINESS_SUFFIXES.length)]    
+    return `${word} ${suffix}`
   }
   generateEmail () {
     // To do: implement email generation logic.
