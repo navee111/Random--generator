@@ -17,11 +17,11 @@ export const LAST_NAMES = [
   "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",
   // add more names here.
 ]
-export const USERNAMES_PREFIXES = [
+export const USERNAME_PREFIXES = [
   "cool", "super", "mega", "ultra", "hyper", "fast", "smart", "pro", "light", "shadow",
   // add more prefixes here.
 ]
-export const USERNAMES_SUFFIXES = [
+export const USERNAME_SUFFIXES = [
   "123", "xyz", "007", "pro", "master", "king", "queen", "ninja", "guru", "wizard",
   // add more suffixes here.
 ]

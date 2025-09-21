@@ -1,8 +1,8 @@
 import {
   FIRST_NAMES,
   LAST_NAMES,
-  USERNAMES_PREFIXES,
-  USERNAMES_SUFFIXES,
+  USERNAME_PREFIXES,
+  USERNAME_SUFFIXES,
   BUSINESS_WORDS,
   BUSINESS_SUFFIXES
 } from './data/names.js'
@@ -34,21 +34,24 @@ class NameGenerator {
 
 
   }
-  generateLastName () {
-    // To do: implement last name generation logic.
-  }
+generateLastName () {
+  const randomIndex = Math.floor(Math.random() * LAST_NAMES.length)
+  return LAST_NAMES[randomIndex]
+}
   generateFullName () {
-    // To do: implement full name generation logic.
+    const firstName = this.generateFirstName()
+    const lastName = this.generateLastName()
+    return `${firstName} ${lastName}`
   }
   generateUsername (style = 'modern', maxLength = 15) {
     let Username = ''
     if ( style === 'modern') {
-      const prefix = USERNAMES_PREFIXES[Math.floor(Math.random() * USERNAMES_PREFIXES.length)]
-      const suffix = USERNAMES_SUFFIXES[Math.floor(Math.random() * USERNAMES_SUFFIXES.length)]
+      const prefix = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
+      const suffix = USERNAME_SUFFIXES[Math.floor(Math.random() * USERNAME_SUFFIXES.length)]
       const number = Math.floor(Math.random() * 99) * 1
       Username = `${prefix}${number}${suffix}`
     } else if ( style === 'simple') {
-      const word = USERNAMES_PREFIXES[Math.floor(Math.random() * USERNAMES_PREFIXES.length)]
+      const word = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
       const number = Math.floor(Math.random() * 999) * 1
       Username = `${word}${number}`
     } else if ( style === 'name-based') {
@@ -68,8 +71,7 @@ class NameGenerator {
   }
   generateEmail () {
     // To do: implement email generation logic.
+    }
   }
   
-  }
-  
-  export default NameGenerator 
+  export default NameGenerator
