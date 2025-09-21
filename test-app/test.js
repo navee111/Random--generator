@@ -43,10 +43,19 @@ console.log ('Female:', nameGen.generateFirstName('female'))
 console.log ('Neutral:', nameGen.generateFirstName('neutral'))
 console.log ('Any:', nameGen.generateFullName())
 
-console.log ('\Full Names:')
+console.log ('\nFull Names:')
 for (let i = 0; i < 5; i++) {
   console.log (nameGen.generateFullName())
 }
-// To do: add more tests for last names, usernames, business names, etc.
+console.log ('\nUsernames:')
+console.log ('Modern:', nameGen.generateUsername('modern'))
+console.log ('Simple:', nameGen.generateUsername('simple'))
+console.log ('Name-based:', nameGen.generateUsername('name-based'))
+
+console.log ('\nBusiness Names:')
+console.log ('Tech:', nameGen.generateBusinessName('tech'))
+console.log ('Creative:', nameGen.generateBusinessName('creative'))
+console.log ('General:', nameGen.generateBusinessName('general'))
+
 
 

@@ -48,10 +48,10 @@ class NameGenerator {
       const number = Math.floor(Math.random() * 99) * 1
       Username = `${prefix}${number}${suffix}`
     } else if ( style === 'simple') {
-      const word = USERNAMES_PREFIXES.neutral[Math.floor(Math.random() * USERNAMES_PREFIXES.neutral.length)]
+      const word = USERNAMES_PREFIXES[Math.floor(Math.random() * USERNAMES_PREFIXES.length)]
       const number = Math.floor(Math.random() * 999) * 1
       Username = `${word}${number}`
-    } else if ( style === 'namne-based') {
+    } else if ( style === 'name-based') {
       const firstName = this.generateFirstName().toLowerCase()
       const lastName = this.generateLastName().toLowerCase()
       const number = Math.floor(Math.random() * 99) * 1
