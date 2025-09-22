@@ -1,9 +1,11 @@
 // test-app/test.js
 import PasswordGenerator from '../src/passwordGenerator.js'
 import NameGenerator from '../src/NameGenerator.js'
+import RandomGenerator from '../src/RandomGenerator.js'
 
 const passGen = new PasswordGenerator()
 const nameGen = new NameGenerator()
+const generator = new RandomGenerator()
 
 console.log('Testing Password Generator:')
 for (let i = 0; i < 10; i++) {
@@ -57,5 +59,8 @@ console.log ('Tech:', nameGen.generateBusinessName('tech'))
 console.log ('Creative:', nameGen.generateBusinessName('creative'))
 console.log ('General:', nameGen.generateBusinessName('general'))
 
-
-
+console.log('\n=== MAIN INTERFACE TESTS ===')
+console.log('Password:', generator.generatePassword(12))
+console.log('Name:', generator.generateName())
+console.log('Username:', generator.generateUsername())
+console.log('Business:', generator.generateBusinessName('tech'))
