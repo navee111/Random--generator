@@ -64,5 +64,50 @@ Testing Password Strength:
 "password123" = strength: 50/100
 "Uz)V,@6?t6+Q(8oY" = strength: 100/100 
 
-**Name generate test**
- // To Do continue with test rapport
+**What was tested**
+Male, female, gender-netural, any gender, fullName. name generation
+How was tested
+Called generateFirstName('male'), called generateFirstName('female'), Called generateFirstName('any') or generateFirstName(), Called generateFullName
+**Test result**
+pass: Generated valid male names from dataset.
+pass: Generted valid female names from dataset.
+pass: Generated neutral names correctly.
+pass: Returned names from the combined dataset.
+pass: Generated realistic combinations of first + last names.
+Example --> male "Anton", "David", "lukas"
+Example --> female "Mary", "Lina", "Susan"
+Example --> gender-natural "Tylor", "Jordan", "Morgan"
+Example --> Any gender "Paul", "Jennifer", "Chris"
+Example --> FullName "Paul Miller", "Linda Rodriguez", "Jennifer Williams"
+
+**What was tested**
+Name format consistency
+How was tested
+Checked all outputs for "FirstName LastName" pattern.
+Test result
+pass: All names followed correct formatting.
+
+
+**What was tested**
+Name diversity
+**How was tested**
+Generated 5 different full names.
+Test result
+pass: No duplicates, good distribution.
+**Example** --> "Robert Johnson", "Emily Davis", "James Brown"
+
+
+**Overall Test Results**
+Total Tests Conducted: 25 test cases
+Passed: 25
+Failed: had som issues with password generate because of the incorecct password generate functions, and it's fixed now.
+Pass Rate: 100%
+Test Environment Details
+JavaScript Engine: Node.js v23.7.0
+Testing Framework: Manual console-based testing
+
+**Recommendations for Future Testing**
+Implement Automated Unit Tests: Use a testing framework like Jest for automated verification.
+Add Statistical Randomness Tests: Implement chi-square tests for randomness distribution
+Performance Benchmarking: Add timing measurements for bulk operations
+Edge Case Expansion: Test extreme values like very long passwords or empty inputs. 
