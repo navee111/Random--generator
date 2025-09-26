@@ -1,8 +1,9 @@
 **Test Report Random Generator Module**
 **Testing Method** 
-Manual testing using console ouput verication and visual inspection. 
+Manual testing:  using console ouput verication and visual inspection.
+Automated testing : jest test framework. 
 **Test Environment**
-Node.js v23.7.0, ES6 modules, npm test script
+Node.js v23.7.0, ES6 modules, npm test script using jest. 
 
 **Password Generate Test**
 
@@ -87,6 +88,13 @@ Checked all outputs for "FirstName LastName" pattern.
 Test result
 pass: All names followed correct formatting.
 
+**Automated Jest Tests**
+Password Generator:
+generates password of correct length
+Name Generator:
+generates full names correctly
+Summary: 2 automated tests passed, 0 failed.
+
 
 **What was tested**
 Name diversity
@@ -98,16 +106,12 @@ pass: No duplicates, good distribution.
 
 
 **Overall Test Results**
-Total Tests Conducted: 25 test cases
-Passed: 25
-Failed: had som issues with password generate because of the incorecct password generate functions, and it's fixed now.
+Total Manual Test Cases: 25
+Total Automated Test Cases: 2
 Pass Rate: 100%
-Test Environment Details
-JavaScript Engine: Node.js v23.7.0
-Testing Framework: Manual console-based testing
+Test Environment Details: Node.js v23.7.0, ES6 modules, Jest 29.7.0
 
 **Recommendations for Future Testing**
-Implement Automated Unit Tests: Use a testing framework like Jest for automated verification.
-Add Statistical Randomness Tests: Implement chi-square tests for randomness distribution
-Performance Benchmarking: Add timing measurements for bulk operations
-Edge Case Expansion: Test extreme values like very long passwords or empty inputs. 
+Implement more automated Jest tests for all generator functions.
+Add statistical randomness tests for password and name generation.
+Test edge cases like empty input, very long passwords, or invalid options.
