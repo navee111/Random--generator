@@ -59,7 +59,14 @@ console.log ('Tech:', nameGen.generateBusinessName('tech'))
 console.log ('Creative:', nameGen.generateBusinessName('creative'))
 console.log ('General:', nameGen.generateBusinessName('general'))
 
-console.log('\n=== MAIN INTERFACE TESTS ===')
+function testPasswordGeneration() {
+  console.log('Testing Password Generator:')
+  // existing tests
+}try {
+  console.log('Password:', generator.generatePassword(12))
+} catch (error) {
+  console.error('Error:', error.message)
+}console.log('\n=== MAIN INTERFACE TESTS ===')
 console.log('Password:', generator.generatePassword(12))
 console.log('Name:', generator.generateName())
 console.log('Username:', generator.generateUsername())

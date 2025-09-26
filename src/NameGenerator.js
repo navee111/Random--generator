@@ -140,9 +140,8 @@ generateLastName () {
    * const creativeStudio = nameGen.generateBusinessName('creative');
    * const generalBusiness = nameGen.generateBusinessName(); // defaults to 'general'
    */
-  generateBusinessName ( industry = 'general') {
-     //console.log('BUSINESS_WORDS:', BUSINESS_WORDS)
-    //console.log('industry parameter:', industry)
+  generateBusinessName ( industry = 'general', includeTypes = true) {
+    
     let wordPool = []
 
     if ( industry === 'tech') {
@@ -159,14 +158,17 @@ generateLastName () {
         ...BUSINESS_WORDS.business
       ]
     }
-    //console.log('wordPool:', wordPool)
-  //console.log('wordPool length:', wordPool.length)
+    
 
     const word = wordPool[Math.floor(Math.random() * wordPool.length)]
-    console.log('selected word:', word)
+    if (includeTypes) {
       const suffix = BUSINESS_SUFFIXES[Math.floor(Math.random() * BUSINESS_SUFFIXES.length)]    
     return `${word} ${suffix}`
+  } else {
+    return word
   }
+  }
+
   /**
    * Generates a random email address based on names and common domains.
    * This method is currently under development.
@@ -181,5 +183,6 @@ generateLastName () {
     // To do: implement email generation logic.
     }
   }
+
   
   export default NameGenerator
