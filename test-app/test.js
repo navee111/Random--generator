@@ -1,5 +1,5 @@
 // test-app/test.js
-import PasswordGenerator from '../src/passwordGenerator.js'
+import PasswordGenerator from '../src/PasswordGenerator.js'
 import NameGenerator from '../src/NameGenerator.js'
 import RandomGenerator from '../src/RandomGenerator.js'
 

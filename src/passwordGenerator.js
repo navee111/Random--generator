@@ -136,7 +136,7 @@ generateSecure(length = 12, options = {}) {
     // length
     if (password.length >= 8) score += 20
     if (password.length >= 12) score += 10
-    if ( password.lengh >= 16) score += 10
+    if ( password.length >= 16) score += 10
 
     // character variety
     if (/[a-z]/.test(password)) score += 15

@@ -1,4 +1,4 @@
-import passwordGenerator from './passwordGenerator.js'
+import PasswordGenerator from './PasswordGenerator.js'
 import NameGenerator from './NameGenerator.js'
 
 /**
@@ -11,7 +11,7 @@ import NameGenerator from './NameGenerator.js'
  * const password = generator.generatePassword(12, { includeSymbols: true });
  * const name = generator.generateName('full', 'female');
  */
-class randomGenerator {
+class RandomGenerator {
   /**
    * Creates an instance of randomGenerator.
    * Initializes internal generators for passwords and names.
@@ -19,7 +19,7 @@ class randomGenerator {
    * @constructor
    */
   constructor () {
-    this.passwordGenerator = new passwordGenerator ()
+    this.passwordGenerator = new PasswordGenerator()
     this.nameGenerator = new NameGenerator()
     
   }
@@ -52,7 +52,7 @@ class randomGenerator {
    * console.log(validation.level); // 'strong'
    */
   validatePasswordStrength (password) {
-    return this.passwordGenerator.validatePasswordStrength(password)
+    return this.passwordGenerator.validateStrength(password)
   }
   // Name generation methods
   /**
@@ -97,4 +97,4 @@ class randomGenerator {
     return this.nameGenerator.generateBusinessName(industry)
   }
 }
-export default randomGenerator
+export default RandomGenerator

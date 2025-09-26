@@ -141,8 +141,7 @@ generateLastName () {
    * const generalBusiness = nameGen.generateBusinessName(); // defaults to 'general'
    */
   generateBusinessName ( industry = 'general', includeTypes = true) {
-    
-    let wordPool = []
+      let wordPool = []
 
     if ( industry === 'tech') {
       wordPool = BUSINESS_WORDS.tech
