@@ -3,6 +3,30 @@ import PasswordGenerator from '../src/PasswordGenerator.js'
 import NameGenerator from '../src/NameGenerator.js'
 import RandomGenerator from '../src/RandomGenerator.js'
 
+describe('passwordGenerator', () => {
+  // const passGen = new PasswordGenerator() // Removed duplicate declaration
+test('generates password of correct length', () => {
+    for (let i = 0; i < 10; i++) {
+      const pwd = passGen.generateSecure(12)
+      console.log(pwd)
+      expect(typeof pwd).toBe('string')
+      expect(pwd.length).toBe(12)
+    }
+})
+describe('NameGenerator', () => {
+  const nameGen = new NameGenerator()
+  
+  test('generates full names', () => {
+    for (let i = 0; i < 5; i++) {
+      const fullName = nameGen.generateFullName()
+      console.log(fullName)
+      expect(typeof fullName).toBe('string')
+      expect(fullName.split(' ').length).toBe(2)
+    }
+  })
+})
+
+
 const passGen = new PasswordGenerator()
 const nameGen = new NameGenerator()
 const generator = new RandomGenerator()
@@ -71,3 +95,4 @@ console.log('Password:', generator.generatePassword(12))
 console.log('Name:', generator.generateName())
 console.log('Username:', generator.generateUsername())
 console.log('Business:', generator.generateBusinessName('tech'))
+})
