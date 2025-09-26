@@ -228,8 +228,11 @@ random-generator-js/
 ```
 
 ### Running Tests
+> **Notice:** Before running jest tests, make sure the Jest test code in `test.js` line 6 --> 27 and line 98  is **uncommented**.
+> Then, run:
 ```bash
-npm test
+ run -> npm test (jest)
+run -> node test-app/test.js ( to generate)
 ```
 
 ### Contributing
