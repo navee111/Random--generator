@@ -10,10 +10,12 @@ A comprehensive JavaScript module for generating secure passwords, realistic nam
 
 ## Installation
 
+
 ### From GitHub
 ```bash
-git clone https://github.com/yourusername/random-generator-js.git
-cd random-generator-js
+npm install random--generator
+note: make sure in your package.json you have --> "type": "module", 
+ 
 ```
 
 ### Usage in Your Project
@@ -101,9 +103,9 @@ generator.generatePassword(12, {
 Returns password strength score from 0-100.
 
 ```javascript
-generator.validatePasswordStrength("123456")        // 15
-generator.validatePasswordStrength("Password123")   // 50
-generator.validatePasswordStrength("MyS3cur3P@ssw0rd!") // 100
+generator.validatePasswordStrength("123456")        // 15 week
+generator.validatePasswordStrength("Password123")   // 50  medium strength
+generator.validatePasswordStrength("MyS3cur3P@ssw0rd!") // 100 strong 
 ```
 
 ### Name Generation
