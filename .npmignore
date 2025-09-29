@@ -1,0 +1,14 @@
+# Testrelaterat
+test-app/
+test.js
+jest.config.cjs
+
+# Bygg- och utvecklingskonfig
+.babelrc
+
+# Dokumentation och interna filer
+Reflection.md
+testrapport.md
+
+# Logs
+*.log
