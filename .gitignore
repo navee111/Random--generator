@@ -1,0 +1,17 @@
+# node_modules (skippas ändå, men kan vara bra att ha med för tydlighet)
+node_modules/
+
+# Testrelaterat
+test-app/
+test.js
+jest.config.cjs
+
+# Bygg- och utvecklingskonfig
+.babelrc
+
+# Dokumentation och interna filer
+Reflection.md
+testrapport.md
+
+# Övriga temporära filer
+*.log
