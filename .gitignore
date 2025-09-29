@@ -1,17 +1,16 @@
-# node_modules (skippas ändå, men kan vara bra att ha med för tydlighet)
+# Node-moduler och cache
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
 
-# Testrelaterat
-test-app/
-test.js
-jest.config.cjs
+# Byggfiler
+dist/
+build/
 
-# Bygg- och utvecklingskonfig
-.babelrc
-
-# Dokumentation och interna filer
-Reflection.md
-testrapport.md
-
-# Övriga temporära filer
+# Logs
 *.log
+
+# Systemfiler
+.DS_Store
