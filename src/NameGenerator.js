@@ -105,27 +105,59 @@ generateLastName () {
    * const nameBasedUsername = nameGen.generateUsername('name-based', 20);
    */
   generateUsername (style = 'modern', maxLength = 15) {
-    let Username = ''
+    let username = ''
     if ( style === 'modern') {
-      const prefix = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
+      username = this.#generateModrenUsername()
+
+      /**const prefix = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
       const suffix = USERNAME_SUFFIXES[Math.floor(Math.random() * USERNAME_SUFFIXES.length)]
       const number = Math.floor(Math.random() * 99) * 1
-      Username = `${prefix}${number}${suffix}`
+      Username = `${prefix}${number}${suffix}`*/
     } else if ( style === 'simple') {
-      const word = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
+      /**const word = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
       const number = Math.floor(Math.random() * 999) * 1
-      Username = `${word}${number}`
+      Username = `${word}${number}`**/
+      username = this.#generateeSimpleUsername()
     } else if ( style === 'name-based') {
-      const firstName = this.generateFirstName().toLowerCase()
+      /**const firstName = this.generateFirstName().toLowerCase()
       const lastName = this.generateLastName().toLowerCase()
       const number = Math.floor(Math.random() * 99) * 1
-      Username = `${firstName}.${lastName}${number}`
+      Username = `${firstName}.${lastName}${number}`**/
+      username = this.#generateNameBasedUsername()
     }
-    if (Username.length > maxLength) {
-      Username = Username.substring(0, maxLength)
-    }
-    return Username
+    return this.#truncateToMaxLength(username, maxLength)
+    //if (Username.length > maxLength) {
+      //Username = Username.substring(0, maxLength)
+    //}
+    //return Username 
   }
+  #generateModrenUsername() {
+    const prefix = this.#getRandomElement(USERNAME_PREFIXES)
+    const suffix = this.#getRandomElement(USERNAME_SUFFIXES)
+    const number = Math.floor(Math.random() * 99) + 1
+    return `${prefix}${number}${suffix}`
+  }
+  #generateSimpleUsername() {
+    const word = this.#getRandomElement(USERNAME_PREFIXES)
+    const number = Math.floor(Math.random() * 999) + 1
+    return `${word}${number}`
+  }
+  #generateNameBasedUsername() {
+    const firstName = this.generateFirstName().toLowerCase()
+    const lastName = this.generateLastName().toLowerCase()
+    const number = Math.floor(Math.random() * 99) + 1
+    return `${firstName}.${lastName}${number}`
+  }
+  #truncateToMaxLength(username, maxLength) {
+    if (username.length > maxLength) {
+      return username.substring(0, maxLength)
+    }
+    return username
+  }
+  #getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)]
+  }
+  
   /**
    * Generates a business name suitable for the specified industry category.
    * 
