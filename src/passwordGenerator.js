@@ -49,45 +49,55 @@ class PasswordGenerator {
  * });
  */
 generateSecure(length = 12, options = {}) {
-  const defaults = {
-    includeUppercase: true,
-    includeLowercase: true,
-    includeNumbers: true,
-    includeSymbols: true,
-    excludeAmbiguous: false
+  const opts = this.#mergeOptions(options)
+  let charset = this.#buildCharacterSet(opts)
+  if (opts.excludeAmbiguous) {
+    charset = this.#removeAmbiguousCharacters(charset)
+  }
+   return this.#generateFromCharset(charset, length)
+}
+  #mergeOptions(options) {
+    const defaults = {
+      includeUppercase: true,
+      includeLowercase: true,
+      includeNumbers: true,
+      includeSymbols: true,
+      excludeAmbiguous: false
+    }
+    return { ...defaults, ...options }
   }
   
-  const opts = { ...defaults, ...options }
-  
-  // Build character set based on options.
-  let charset = ''
-  if (opts.includeLowercase) charset += this.lowercase
-  if (opts.includeUppercase) charset += this.uppercase
-  if (opts.includeNumbers) charset += this.numbers
-  if (opts.includeSymbols) charset += this.symbols
+  #buildCharacterSet(opts) {
+    let charset = ''
+    if (opts.includeLowercase) charset += this.lowercase
+    if (opts.includeUppercase) charset += this.uppercase
+    if (opts.includeNumbers) charset += this.numbers
+    if (opts.includeSymbols) charset += this.symbols
+    
+    // Fallback if no character types selected
+    if (charset === '') {
+      charset = this.lowercase
+    }
+    
+    return charset
+  }
   
   // Remove ambiguous characters if requested.
-  if (opts.excludeAmbiguous) {
-    const ambiguous = '0O1lI'
-    for (let char of ambiguous) {
-      charset = charset.replace(new RegExp(char, 'g'), '')
+ #removeAmbiguousCharacters(charset) {
+    let result = charset
+    for (let char of this.ambiguous) {
+      result = result.replace(new RegExp(char, 'g'), '')
     }
+    return result
   }
-  
-  
-  if (charset === '') {
-    charset = this.lowercase // fallback
+  #generateFromCharset(charset, length) {
+    let password = ''
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length)
+      password += charset[randomIndex]
+    }
+    return password
   }
-  
-  // Generate password
-  let password = ''
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length)
-    password += charset[randomIndex]
-  }
-  
-  return password
-}
   
   /**
    * Generates a human-readable password using dictionary words and patterns.
@@ -133,20 +143,26 @@ generateSecure(length = 12, options = {}) {
   validateStrength(password) {
     let score = 0
 
-    // length
-    if (password.length >= 8) score += 20
-    if (password.length >= 12) score += 10
-    if ( password.length >= 16) score += 10
+    score += this.#calculateLengthScore(password.length)
+    score += this.#calculateVarietyScore(password)
 
-    // character variety
-    if (/[a-z]/.test(password)) score += 15
-    if (/[A-Z]/.test(password)) score += 15
-    if(/[0-9]/.test(password)) score += 15
-    if (/[^a-zA-Z0-9]/.test(password)) score += 25
-
-    return Math.min(score, 100) // max score is 100
+    return Math.min(score, 100)
+  }
+  #calculateLengthScore(length) {
+    let score = 0
+    if (length >= 8) score += 20
+    if (length >= 12) score += 10
+    if (length >= 16) score += 10
+    return score
 
   }
+  #calculateVarietyScore(password) {
+    let score = 0 
+    if (/[a-z]/.test(password)) score += 15
+    if (/[A-Z]/.test(password)) score += 15
+    if (/[0-9]/.test(password)) score += 15
+    if (/[^A-Za-z0-9]/.test(password)) score += 25
+    return score
+  }
 }
-export default PasswordGenerator
-
+ export default PasswordGenerator
