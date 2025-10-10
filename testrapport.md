@@ -225,7 +225,7 @@ PASS  test/PasswordGenerator.test.js
 PASS  test/NameGenerator.test.js
   ✓ generates full names correctly (1ms)
   ✓ generates different names on each call (2ms)
-![test](test.png)
+![test](./test.png)
 
 ```
 
