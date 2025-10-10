@@ -117,7 +117,7 @@ generateLastName () {
       /**const word = USERNAME_PREFIXES[Math.floor(Math.random() * USERNAME_PREFIXES.length)]
       const number = Math.floor(Math.random() * 999) * 1
       Username = `${word}${number}`**/
-      username = this.#generateeSimpleUsername()
+      username = this.#generateSimpleUsername()
     } else if ( style === 'name-based') {
       /**const firstName = this.generateFirstName().toLowerCase()
       const lastName = this.generateLastName().toLowerCase()
@@ -157,7 +157,7 @@ generateLastName () {
   #getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)]
   }
-  
+
   /**
    * Generates a business name suitable for the specified industry category.
    * 
@@ -174,17 +174,25 @@ generateLastName () {
    */
   generateBusinessName ( industry = 'general') {
     const includeTypes = true
-    let wordPool = []
+    const wordPool = this.#selectWordpool(industry)
+    const word = this.#getRandomElement(wordPool)
+    if (includeTypes) {
+      const suffix = this.#getRandomElement(BUSINESS_SUFFIXES)
+      return `${word} ${suffix}`
+    }
+    return word
+  }
+  #selectWordpool(industry) {
 
     if ( industry === 'tech') {
-      wordPool = BUSINESS_WORDS.tech
+      return BUSINESS_WORDS.tech
     } else if ( industry === 'creative') {
-      wordPool = BUSINESS_WORDS.creative
+      return BUSINESS_WORDS.creative
     } else if ( industry === 'business') {
-      wordPool = BUSINESS_WORDS.business
+      return BUSINESS_WORDS.business
     } else {
       // 'general' - combine all words.
-      wordPool = [
+      return [
         ...BUSINESS_WORDS.tech,
         ...BUSINESS_WORDS.creative,
         ...BUSINESS_WORDS.business
@@ -192,14 +200,14 @@ generateLastName () {
     }
     
 
-    const word = wordPool[Math.floor(Math.random() * wordPool.length)]
+    /**const word = wordPool[Math.floor(Math.random() * wordPool.length)]
     if (includeTypes) {
       const suffix = BUSINESS_SUFFIXES[Math.floor(Math.random() * BUSINESS_SUFFIXES.length)]    
     return `${word} ${suffix}`
   } else {
     return word
   }
-  }
+  } **/
 
   /**
    * Generates a random email address based on names and common domains.
@@ -211,10 +219,15 @@ generateLastName () {
    * const email = nameGen.generateEmail();
    * // Expected format: "firstname.lastname@domain.com"
    */
-  generateEmail () {
-    // To do: implement email generation logic.
-    }
-  }
+  //generateEmail () {
 
-  
-  export default NameGenerator
+  //}
+  // To do: implement email generation logic.
+}
+}
+
+export default NameGenerator
+
+
+
+
