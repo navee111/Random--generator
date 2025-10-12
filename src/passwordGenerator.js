@@ -76,7 +76,7 @@ generateSecure(length = 12, options = {}) {
     
     // Fallback if no character types selected
     if (charset === '') {
-      charset = this.lowercase
+      throw new Error('at least one character type must be selected')
     }
     
     return charset
