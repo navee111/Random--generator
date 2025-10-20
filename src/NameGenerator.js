@@ -198,17 +198,7 @@ generateLastName () {
         ...BUSINESS_WORDS.business
       ]
     }
-    
-
-    /**const word = wordPool[Math.floor(Math.random() * wordPool.length)]
-    if (includeTypes) {
-      const suffix = BUSINESS_SUFFIXES[Math.floor(Math.random() * BUSINESS_SUFFIXES.length)]    
-    return `${word} ${suffix}`
-  } else {
-    return word
-  }
-  } **/
-
+   
   /**
    * Generates a random email address based on names and common domains.
    * This method is currently under development.
